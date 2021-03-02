@@ -11,49 +11,38 @@ function Testimonials() {
 
     const testimonials = [
         {
-            title: "First slide label",
-            content: "Nulla vitae elit libero, a pharetra augue mollis interdum.",
-            url:"https://bs-uploads.toptal.io/blackfish-uploads/blog/post/seo/og_image_file/og_image/15063/REDESIGN-Speeding-up-Application-Development-with-Bootstrap-Luke_Social-3b49f4c2abf94e39b2f311ed9f0c3785.png",
+            content: "This is a simple tool that allows me to take my own initiative on making investments. Reading financial statemetns has always been an intimidating task but this made it so easy. They really do put it Layman's terms.",
+            name: "Lisa Reynolds",
+            profile: '/assets/images/testimonial1.jpeg'
         },
         {
-            title: "Second Slide",
-            content: "Nulla vitae elit libero, a pharetra augue mollis interdum.",
-            url:"https://bs-uploads.toptal.io/blackfish-uploads/blog/post/seo/og_image_file/og_image/15063/REDESIGN-Speeding-up-Application-Development-with-Bootstrap-Luke_Social-3b49f4c2abf94e39b2f311ed9f0c3785.png",
+            content: "This is a simple tool that allows me to take my own initiative on making investments. Reading financial statemetns has always been an intimidating task but this made it so easy. They really do put it Layman's terms.",
+            name: "Ross Jacobs",
+            profile: '/assets/images/testimonial2.jpeg'
         },
         {
-            title: "Third slide",
-            content: "Nulla vitae elit libero, a pharetra augue mollis interdum.",
-            url:"https://bs-uploads.toptal.io/blackfish-uploads/blog/post/seo/og_image_file/og_image/15063/REDESIGN-Speeding-up-Application-Development-with-Bootstrap-Luke_Social-3b49f4c2abf94e39b2f311ed9f0c3785.png",
-        },
-        {
-            title: "Fourth slide",
-            content: "Nulla vitae elit libero, a pharetra augue mollis interdum.",
-            url:"https://bs-uploads.toptal.io/blackfish-uploads/blog/post/seo/og_image_file/og_image/15063/REDESIGN-Speeding-up-Application-Development-with-Bootstrap-Luke_Social-3b49f4c2abf94e39b2f311ed9f0c3785.png",
-        },
-        {
-            title: "Fifth slide",
-            content: "Nulla vitae elit libero, a pharetra augue mollis interdum.",
-            url:"https://bs-uploads.toptal.io/blackfish-uploads/blog/post/seo/og_image_file/og_image/15063/REDESIGN-Speeding-up-Application-Development-with-Bootstrap-Luke_Social-3b49f4c2abf94e39b2f311ed9f0c3785.png",
-        },
+            content: "This is a simple tool that allows me to take my own initiative on making investments. Reading financial statemetns has always been an intimidating task but this made it so easy. They really do put it Layman's terms.",
+            name: "Nick Acosta",
+            profile: '/assets/images/testimonial3.jpeg'
+        }
     ]
 
     return (
-        <Carousel activeIndex={index} onSelect={handleSelect}>
-            { testimonials.map(({title,content,url}) => (
-                <Carousel.Item>
-                    <img
-                        className="d-block w-100"
-                        src={url}
-                        alt="Third slide"
-                    />
-                    <Carousel.Caption>
-                        <h3>{title}</h3>
-                        <p>{content}</p>
-                    </Carousel.Caption>
-                </Carousel.Item>
-            ))
-            }
-        </Carousel>
+        <div className="container-fluid text-center carousel-div">
+            <p class="testimonials-heading font-weight-bold">WHAT OUR CUSTOMERS HAVE TO SAY</p>
+            <div className="carousel-container">
+            <Carousel activeIndex={index} onSelect={handleSelect}>
+                {testimonials.map(({ content, name, profile }) => (
+                    <Carousel.Item>
+                        <h3>{content}</h3>
+                        <img className="testimonial-image" src={profile} alt="testimonial 1" />
+                        <em>{name} </em>
+                    </Carousel.Item> 
+                ))
+                }
+            </Carousel>
+            </div>
+        </div>
     );
 }
 
