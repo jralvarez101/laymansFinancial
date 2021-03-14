@@ -8,14 +8,16 @@ function Footer() {
         <div className="container-fluid footer-bg">
             <div className="container footer-bg">
                 <div className="row pt-4">
-                    <div className="col-sm">
-                        <img
-                            src="/assets/images/mainlogo.png"
-                            width="70"
-                            height="70"
-                            className="d-inline-block align-top"
-                            alt="main logo"
-                        />
+                    <div className="col-sm" >
+                        <a href="/">
+                            <img
+                                src="/assets/images/mainlogo.png"
+                                width="70"
+                                height="70"
+                                className="d-inline-block align-top"
+                                alt="main logo"
+                            />
+                        </a>
                     </div>
                     <div className="col-sm">
                         <h3 className="footer-p">Company</h3>

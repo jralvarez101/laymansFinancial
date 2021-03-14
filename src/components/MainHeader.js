@@ -12,7 +12,7 @@ function MainHeader() {
                     <Container className='left-container'>
                         <p>WE DO THINGS DIFFERENTLY</p>
                         <h1>Simplify Your Investment Research</h1>
-                        <p className="mt-4 ">We put financial statements in Layman's Terms. A simple solution
+                        <p mt={4}>We put financial statements in Layman's Terms. A simple solution
                             to make investing fun. A quick search will give the simple financial breakdown
                             with more information and less clutter, just the way we like it.
                         </p>

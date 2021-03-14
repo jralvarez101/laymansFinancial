@@ -135,39 +135,65 @@ a:hover{
   border:2px solid #ff7e67;
 } 
 
-/* testimonials section */
+/* About us Section */
 
-/* #testimonials{
-  text-align: center;
-  background-color: #68b0ab;
-  letter-spacing: 200%;
-  color: #ecf4f3;
-}
-
-.carousel-container{
-  width: 70%;
-  margin: auto;
-}
-
-.testimonials-heading {
-  padding-top: 70px;
-  margin-bottom: 50px;
-  color: #ecf4f3;
-}
-
-.carousel-body{
+.row-about{
+  padding-top: 100px;
   padding-bottom: 100px;
+  
 }
 
-.testimonial-image {
-  border-radius: 50%;
-  width: 10%;
-  margin: 20px;
-} */
+.aboutus-img{
+  width: 100%;
+  
+}
 
-footer section
+.main-aboutus{
+  /* height: 700px; */
+  background-color: #006a71;
+  
+} 
 
-.social-icons {
+/* ABOUT US CSS  */
+
+ .about-us-header{
+  position: relative;
+  height: 300px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.about-us-header::before{
+  content:"";
+  background-image: url(./images/about-us.jpeg);
+  filter: opacity(80%);
+  background-size: cover;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+} 
+
+
+.header-small{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  padding:30px 40px 30px 40px;
+  
+}
+
+.foreground-aboutus{
+  backdrop-filter:brightness(80%);
+}
+
+/* footer section */
+
+ .social-icons {
   color: #ff7e67;
 }
 
@@ -181,7 +207,8 @@ footer section
 
 .footer-bg{
   background-color:#006a71; 
-}
+} 
+
 /* #footer{
   background-color:#006a71; 
   height: 500px;
@@ -223,67 +250,16 @@ footer section
 } */
 
 
-/* ABOUT US CSS  */
-/* .about-us-header{
-  position: relative;
-  height: 300px;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
 
-.about-us-header::before{
-  content:"";
-  background-image: url(/images/about-us.jpeg);
-  filter: opacity(80%);
-  background-size: cover;
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-} */
 
-/* 
-.header-small{
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  padding:30px 40px 30px 40px;
-  
-}
 
-.foreground-aboutus{
-  backdrop-filter:brightness(50%);
-}
 
-#main-aboutus{
-  height: 700px;
-  background-color: #006a71;
-  
-} */
 
-/* .row-about{
-  padding-top: 100px;
-  
-  padding-bottom: 100px;
-}
 
-.aboutus-img{
-  width: 100%;
-  
-}
 
-.hr-line{
-  border: solid 1px #ff7e67;
-  width: 70%;
-  margin-top: 100px;
-} */
 
 /* CONTACT SECTION  */
-/* .contact-section {
+ .contact-section {
   background-color: #006a71;
   color: #ecf4f3 ;
   padding: 100px 0;
@@ -298,7 +274,7 @@ footer section
 }
 
 .contact-input{
-  background-color: #006a71;
+  background-color: #ecf4f3;
   border:solid 1px #ff7e67;
 }
 
@@ -308,13 +284,13 @@ footer section
   color: #ecf4f3;
   line-height: 200%;
   
-} */
+} 
 
-/* .form-control::placeholder { Chrome, Firefox, Opera, Safari 10.1+ */
-  /* color: white;
-  opacity: 1; Firefox */
-  /* font-size: 15px;
-} */
+  .form-control::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+   */
+  color: gray;
+   opacity: 1; /*Firefox  */
+  font-size: 15px;
+}  
 
 /* .form-control:-ms-input-placeholder { Internet Explorer 10-11 */
   /* color: white;
