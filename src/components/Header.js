@@ -1,6 +1,6 @@
 import React from 'react';
 import { Navbar, Nav,} from 'react-bootstrap';
-import Link from 'react-router-dom';
+
 
 
 
@@ -23,6 +23,7 @@ function Header() {
                     <Nav.Link className="nav-link" href="/" style={{ color: "#ff7e67" }}>Home</Nav.Link>
                     <Nav.Link className="nav-link" href="/about" style={{ color: "#ff7e67" }}>About Us</Nav.Link>
                     <Nav.Link className="nav-link" href="/contact" style={{ color: "#ff7e67" }}>Contact</Nav.Link>
+                    <Nav.Link className="nav-link" href="/results" style={{ color: "#ff7e67" }}>Results</Nav.Link>
                 </Nav>
             </Navbar.Collapse>
         </Navbar>
