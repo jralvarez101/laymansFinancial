@@ -292,15 +292,9 @@ a:hover{
   font-size: 15px;
 }  
 
-/* .form-control:-ms-input-placeholder { Internet Explorer 10-11 */
-  /* color: white;
-  font-size: 15px;
-} */
-/* 
-.form-control::-ms-input-placeholder { /* Microsoft Edge */
-  /* color: white;
-  font-size: 15px;
-} */ 
+.table-data-style{
+  padding-left: 10px;
+}
 
 
 
