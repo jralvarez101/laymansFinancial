@@ -157,6 +157,78 @@ function CashFlowStatementDisplay({cashFlowList}) {
                     </tr>   
                 </tbody>
             </Table>
+
+            <Table responsive bordered striped>
+                <thead>
+                    <tr>
+                    <th>Financing Activities for {cashFlowStatementSymbol}</th>
+                    {cashFlowObj.date?.map((value, index) => (
+                    <th key={index}>{value}</th>
+                    ))}
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                    <td >Debt Repayment</td>
+                        {cashFlowObj.debtRepayment?.map((value, index) => (
+                    <td key={index}>{value}</td>
+                    ))}
+                    </tr>
+                    <tr>
+                        <td >Common Stock Issued</td>
+                        {cashFlowObj.commonStockIssued?.map((value, index) => (
+                    <td key={index}>{value}</td>
+                    ))}
+                    </tr>
+                    <tr>
+                        <td>Common Stock Purchased</td>
+                        {cashFlowObj.commonStockRepurchased?.map((value, index) => (
+                    <td key={index}>{value}</td>
+                    ))}
+                    </tr>
+                    <tr>
+                        <td>Dividends Paid</td>
+                        {cashFlowObj.dividendsPaid?.map((value, index) => (
+                    <td key={index}>{value}</td>
+                    ))}
+                    </tr>
+                    <tr>
+                        <td>Other Financing Activities</td>
+                        {cashFlowObj.otherFinancingActivites?.map((value, index) => (
+                    <td key={index}>{value}</td>
+                    ))}
+                    </tr>
+                    <tr>
+                        <td className="font-weight-bold">Net Cash Provided by Financing Activities</td>
+                        {cashFlowObj.netCashUsedProvidedByFinancingActivities?.map((value, index) => (
+                    <td  className="font-weight-bold" key={index}>{value}</td>
+                    ))}
+                    </tr>   
+                </tbody>
+            </Table>
+
+            <Table responsive bordered striped>
+                <tbody>
+                    <tr>
+                    <td >Foreign Currency on Cash and Cash Equivalents</td>
+                        {cashFlowObj.effectOfForexChangesOnCash?.map((value, index) => (
+                    <td key={index}>{value}</td>
+                    ))}
+                    </tr>
+                    <tr>
+                        <td >Net Change in Cash</td>
+                        {cashFlowObj.netChangeInCash?.map((value, index) => (
+                    <td key={index}>{value}</td>
+                    ))}
+                    </tr>
+                    <tr>
+                        <td className="font-weight-bold">CASH AND CASH EQUIVALENTS, END OF PERIOD</td>
+                        {cashFlowObj.cashAtEndOfPeriod?.map((value, index) => (
+                    <td  className="font-weight-bold" key={index}>{value}</td>
+                    ))}
+                    </tr>   
+                </tbody>
+            </Table>
         </Container>
         
     )
