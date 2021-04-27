@@ -43,19 +43,19 @@ function CashFlowStatementDisplay({cashFlowList}) {
                     ))}
                     </tr>
                     <tr>
-                        <td >Depreciation and Amortization</td>
+                        <td > - Depreciation and Amortization</td>
                         {cashFlowObj.depreciationAndAmortization?.map((value, index) => (
                     <td key={index}>{value}</td>
                     ))}
                     </tr>
                     <tr>
-                        <td>Stock Based Compensation</td>
+                        <td> - Stock Based Compensation</td>
                         {cashFlowObj.stockBasedCompensation?.map((value, index) => (
                     <td key={index}>{value}</td>
                     ))}
                     </tr>
                     <tr>
-                        <td>Deferred Income Tax</td>
+                        <td> - Deferred Income Tax</td>
                         {cashFlowObj.deferredIncomeTax?.map((value, index) => (
                     <td key={index}>{value}</td>
                     ))}
@@ -63,39 +63,43 @@ function CashFlowStatementDisplay({cashFlowList}) {
                     <tr>
                         <td className="font-weight-bold">Changes in Operating Assets and Liabilities</td>
                         <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
                     </tr>
                     <tr>
-                        <td>Inventory</td>
+                        <td> - Inventory</td>
                         {cashFlowObj.inventory?.map((value, index) => (
                     <td key={index}>{value}</td>
                     ))}
                     </tr>
                     <tr>
-                        <td>Accounts Receivables</td>
+                        <td> - Accounts Receivables</td>
                         {cashFlowObj.accountsReceivables?.map((value, index) => (
                     <td key={index}>{value}</td>
                     ))}
                     </tr>
                     <tr>
-                        <td>Accounts Payables</td>
+                        <td> - Accounts Payables</td>
                         {cashFlowObj.accountsPayables?.map((value, index) => (
                     <td key={index}>{value}</td>
                     ))}
                     </tr>
                     <tr>
-                        <td >Change in Working Capital</td>
+                        <td > - Change in Working Capital</td>
                         {cashFlowObj.changeInWorkingCapital?.map((value, index) => (
                     <td  key={index}>{value}</td>
                     ))}
                     </tr>
                     <tr>
-                        <td>Other Working Capital</td>
+                        <td> - Other Working Capital</td>
                         {cashFlowObj.otherWorkingCapital?.map((value, index) => (
                     <td key={index}>{value}</td>
                     ))}
                     </tr>
                     <tr>
-                        <td >Other Non-Cash Items</td>
+                        <td > - Other Non-Cash Items</td>
                         {cashFlowObj.otherNonCashItems?.map((value, index) => (
                     <td key={index}>{value}</td>
                     ))}
@@ -120,31 +124,31 @@ function CashFlowStatementDisplay({cashFlowList}) {
                 </thead>
                 <tbody>
                     <tr>
-                    <td >Investment in Property Plant and Equipment</td>
+                    <td > - Investment in Property Plant and Equipment</td>
                         {cashFlowObj.investmentsInPropertyPlantAndEquipment?.map((value, index) => (
                     <td key={index}>{value}</td>
                     ))}
                     </tr>
                     <tr>
-                        <td >Acquisitions Net</td>
+                        <td > - Acquisitions Net</td>
                         {cashFlowObj.acquisitionsNet?.map((value, index) => (
                     <td key={index}>{value}</td>
                     ))}
                     </tr>
                     <tr>
-                        <td>Purchase of Investments</td>
+                        <td> - Purchase of Investments</td>
                         {cashFlowObj.purchasesOfInvestments?.map((value, index) => (
                     <td key={index}>{value}</td>
                     ))}
                     </tr>
                     <tr>
-                        <td>Sales and Maturities of marketable Securities</td>
+                        <td> - Sales and Maturities of marketable Securities</td>
                         {cashFlowObj.salesMaturitiesOfInvestments?.map((value, index) => (
                     <td key={index}>{value}</td>
                     ))}
                     </tr>
                     <tr>
-                        <td>Other Investing Activities</td>
+                        <td> - Other Investing Activities</td>
                         {cashFlowObj.otherInvestingActivites?.map((value, index) => (
                     <td key={index}>{value}</td>
                     ))}
@@ -161,7 +165,7 @@ function CashFlowStatementDisplay({cashFlowList}) {
             <Table responsive bordered striped>
                 <thead>
                     <tr>
-                    <th>Financing Activities for {cashFlowStatementSymbol}</th>
+                    <th> - Financing Activities for {cashFlowStatementSymbol}</th>
                     {cashFlowObj.date?.map((value, index) => (
                     <th key={index}>{value}</th>
                     ))}
@@ -169,31 +173,31 @@ function CashFlowStatementDisplay({cashFlowList}) {
                 </thead>
                 <tbody>
                     <tr>
-                    <td >Debt Repayment</td>
+                    <td > - Debt Repayment</td>
                         {cashFlowObj.debtRepayment?.map((value, index) => (
                     <td key={index}>{value}</td>
                     ))}
                     </tr>
                     <tr>
-                        <td >Common Stock Issued</td>
+                        <td > - Common Stock Issued</td>
                         {cashFlowObj.commonStockIssued?.map((value, index) => (
                     <td key={index}>{value}</td>
                     ))}
                     </tr>
                     <tr>
-                        <td>Common Stock Purchased</td>
+                        <td> - Common Stock Purchased</td>
                         {cashFlowObj.commonStockRepurchased?.map((value, index) => (
                     <td key={index}>{value}</td>
                     ))}
                     </tr>
                     <tr>
-                        <td>Dividends Paid</td>
+                        <td> - Dividends Paid</td>
                         {cashFlowObj.dividendsPaid?.map((value, index) => (
                     <td key={index}>{value}</td>
                     ))}
                     </tr>
                     <tr>
-                        <td>Other Financing Activities</td>
+                        <td> - Other Financing Activities</td>
                         {cashFlowObj.otherFinancingActivites?.map((value, index) => (
                     <td key={index}>{value}</td>
                     ))}

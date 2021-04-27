@@ -1,5 +1,7 @@
 import React, { useState} from 'react'
 import ResultsTabs from '../components/ResultsTabs';
+import Footer from '../components/Footer';
+
 
 
 
@@ -92,8 +94,6 @@ console.log('data List CashFlow:', cashFlowList)
         getCashFlowStatement(e);
     }
 
-
-
     return (
         <div>
             <h1>The Results Page</h1>
@@ -101,7 +101,7 @@ console.log('data List CashFlow:', cashFlowList)
             <input value={searchInput||''} onChange={handleOnChange}/>
             <button onClick={getData}>Click Me</button>
             <ResultsTabs incomeList={incomeList} balanceList={balanceList} cashFlowList={cashFlowList}/>
-            
+            <Footer/>
 
         </div>
     )

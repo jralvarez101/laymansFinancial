@@ -44,25 +44,25 @@ function IncomeStatementDisplay({incomeList}) {
                     ))}
                     </tr>
                     <tr>
-                        <td >Cost of Goods Sold</td>
+                        <td > - Cost of Goods Sold</td>
                         {incomeObj.costOfRevenue?.map((value, index) => (
                     <td key={index}>{value}</td>
                     ))}
                     </tr>
                     <tr>
-                        <td>Research and Development Expenses</td>
+                        <td> - Research and Development Expenses</td>
                         {incomeObj.researchAndDevelopmentExpenses?.map((value, index) => (
                     <td key={index}>{value}</td>
                     ))}
                     </tr>
                     <tr>
-                        <td>Selling and Marketing Expenses</td>
+                        <td> - Selling and Marketing Expenses</td>
                         {incomeObj.sellingAndMarketingExpenses?.map((value, index) => (
                     <td key={index}>{value}</td>
                     ))}
                     </tr>
                     <tr>
-                        <td>Other Expenses</td>
+                        <td> - Other Expenses</td>
                         {incomeObj.otherExpenses?.map((value, index) => (
                     <td key={index}>{value}</td>
                     ))}
@@ -74,23 +74,27 @@ function IncomeStatementDisplay({incomeList}) {
                     ))}
                     </tr>
                     <tr>
-                        <td>Other Expenses</td>
+                        <td className="font-weight-bold">OTHER EXPENSES</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
                         <td></td>
                     </tr>
                     <tr>
-                        <td>Cost and Expenses</td>
+                        <td> - Cost and Expenses</td>
                         {incomeObj.costAndExpenses?.map((value, index) => (
                     <td key={index}>{value}</td>
                     ))}
                     </tr>
                     <tr>
-                        <td>Interest Expense</td>
+                        <td> - Interest Expense</td>
                         {incomeObj.interestExpense?.map((value, index) => (
                     <td key={index}>{value}</td>
                     ))}
                     </tr>
                     <tr>
-                        <td>Depreciation and Amortization</td>
+                        <td> - Depreciation and Amortization</td>
                         {incomeObj.depreciationAndAmortization?.map((value, index) => (
                     <td key={index}>{value}</td>
                     ))}
@@ -102,7 +106,7 @@ function IncomeStatementDisplay({incomeList}) {
                     ))}
                     </tr>
                     <tr>
-                        <td>Total Other Income Expenses Net</td>
+                        <td> - Total Other Income Expenses Net</td>
                         {incomeObj.totalOtherIncomeExpensesNet?.map((value, index) => (
                     <td key={index}>{value}</td>
                     ))}
@@ -114,7 +118,7 @@ function IncomeStatementDisplay({incomeList}) {
                     ))}
                     </tr>
                     <tr>
-                        <td className="table-data-style">Income Tax Expense</td>
+                        <td > - Income Tax Expense</td>
                         {incomeObj.incomeTaxExpense?.map((value, index) => (
                     <td key={index}>{value}</td>
                     ))}
