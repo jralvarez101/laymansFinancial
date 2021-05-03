@@ -1,5 +1,5 @@
 import React , {useState} from 'react';
-import {Table, Container} from 'react-bootstrap';
+import {Table} from 'react-bootstrap';
 import { BsFillCaretRightFill } from "react-icons/bs";
 import moment from 'moment';
 moment().format();
@@ -62,11 +62,11 @@ function BalanceSheetDisplay({balanceList}) {
 
     return (
             <div >
-                <Container>
-                    <Table responsive bordered striped>
+                
+                    <Table responsive bordered striped className='table-text'>
                         <thead>
                             <tr>
-                            <th>Balance Sheet for {balanceSheetSymbol} (000's)</th>
+                            <th>Balance Sheet for {balanceSheetSymbol}<small>(ALL IN THOUSANDS)</small></th>
                             {balanceSheetObj.date?.map((value, index) => (
                             <th key={index}>{formatedDate(value)}</th>
                             ))}
@@ -333,7 +333,7 @@ function BalanceSheetDisplay({balanceList}) {
                             </tr>
                         </tbody>
                     </Table>
-                </Container>
+                
             </div>
     )
 }

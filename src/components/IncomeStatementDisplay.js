@@ -1,5 +1,5 @@
 import React from 'react';
-import {Table, Container} from 'react-bootstrap';
+import {Table} from 'react-bootstrap';
 import moment from 'moment';
 moment().format();
 
@@ -43,11 +43,11 @@ function IncomeStatementDisplay({incomeList}) {
     }
 
     return (
-        <Container>
-            <Table responsive bordered striped>
+        <div>
+            <Table responsive bordered striped className='table-text'>
                 <thead>
                     <tr>
-                    <th>Income Statement for {incomeStatementSymbol} in (000's)</th>
+                    <th>Income Statement for {incomeStatementSymbol}<small>(ALL IN THOUSANDS)</small></th>
                     {incomeObj.date?.map((value, index) => (
                     <th key={index}>{formatedDate(value)}</th>
                     ))}
@@ -119,7 +119,7 @@ function IncomeStatementDisplay({incomeList}) {
                     <tr>
                         <td className="font-weight-bold">Operating Profit</td>
                         {incomeObj.operatingIncome?.map((value, index) => (
-                    <td className="font-weight-bold" key={index}>{value}</td>
+                    <td className="font-weight-bold" key={index}>{reducedNumber(value)}</td>
                     ))}
                     </tr>
                     <tr>
@@ -149,7 +149,7 @@ function IncomeStatementDisplay({incomeList}) {
                 
                 </tbody>
             </Table>
-        </Container>
+        </div>
     )
 }
 

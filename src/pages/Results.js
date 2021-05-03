@@ -1,6 +1,7 @@
 import React, { useState} from 'react'
 import ResultsTabs from '../components/ResultsTabs';
 import Footer from '../components/Footer';
+import {Container} from 'react-bootstrap';
 
 
 
@@ -95,12 +96,15 @@ console.log('data List CashFlow:', cashFlowList)
     }
 
     return (
-        <div>
-            <h1>The Results Page</h1>
-            <h1>Search Value: {searchInput ?? 'no dataList'}</h1>
-            <input value={searchInput||''} onChange={handleOnChange}/>
-            <button onClick={getData}>Click Me</button>
+        <div className='results-container'>
+            <Container  className='results-container' >
+                <h1 >Financial Results</h1>
+                <h2>Show Financial Statements for: {searchInput ?? 'no dataList'}</h2>
+                <input className ="mb-5" value={searchInput||''} onChange={handleOnChange}/>
+                <button className='results-btn' variant="outline-primary" onClick={getData}>Search</button>
+            </Container>
             <ResultsTabs incomeList={incomeList} balanceList={balanceList} cashFlowList={cashFlowList}/>
+           
             <Footer/>
 
         </div>

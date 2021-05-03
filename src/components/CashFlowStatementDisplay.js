@@ -1,5 +1,5 @@
 import React from 'react'
-import {Table, Container} from 'react-bootstrap';
+import {Table} from 'react-bootstrap';
 import moment from 'moment';
 moment().format();
 
@@ -43,11 +43,11 @@ function CashFlowStatementDisplay({cashFlowList}) {
     }
 
     return (
-        <Container>
-            <Table responsive bordered striped>
+        <div>
+            <Table responsive bordered striped className='table-text'>
                 <thead>
                     <tr>
-                    <th>Cash Flow from Operating Activities {cashFlowStatementSymbol} in (000's)</th>
+                    <th>Cash Flow from Operating Activities {cashFlowStatementSymbol} <small>(ALL IN THOUSANDS)</small></th>
                     {cashFlowObj.date?.map((value, index) => (
                     <th key={index}>{formatedDate(value)}</th>
                     ))}
@@ -131,10 +131,10 @@ function CashFlowStatementDisplay({cashFlowList}) {
                 </tbody>
             </Table>
 
-            <Table responsive bordered striped>
+            <Table responsive bordered striped className='table-text'>
                 <thead>
                     <tr>
-                    <th>Investing Activities for {cashFlowStatementSymbol}</th>
+                    <th>Investing Activities for {cashFlowStatementSymbol} <small>(ALL IN THOUSANDS)</small></th>
                     {cashFlowObj.date?.map((value, index) => (
                     <th key={index}>{formatedDate(value)}</th>
                     ))}
@@ -180,10 +180,10 @@ function CashFlowStatementDisplay({cashFlowList}) {
                 </tbody>
             </Table>
 
-            <Table responsive bordered striped>
+            <Table responsive bordered striped className='table-text'>
                 <thead>
                     <tr>
-                    <th> - Financing Activities for {cashFlowStatementSymbol}</th>
+                    <th> - Financing Activities for {cashFlowStatementSymbol} <small>(ALL IN THOUSANDS)</small></th>
                     {cashFlowObj.date?.map((value, index) => (
                     <th key={index}>{formatedDate(value)}</th>
                     ))}
@@ -229,7 +229,7 @@ function CashFlowStatementDisplay({cashFlowList}) {
                 </tbody>
             </Table>
 
-            <Table responsive bordered striped>
+            <Table responsive bordered striped className='table-text'>
                 <tbody>
                     <tr>
                     <td >Foreign Currency on Cash and Cash Equivalents</td>
@@ -251,8 +251,8 @@ function CashFlowStatementDisplay({cashFlowList}) {
                     </tr>   
                 </tbody>
             </Table>
-        </Container>
-        
+       
+         </div>
     )
 }
 
