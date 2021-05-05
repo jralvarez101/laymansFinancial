@@ -26,6 +26,7 @@ const formatTable =(response=[])=>{
 function CashFlowStatementDisplay({cashFlowList}) {
     const cashFlowObj = cashFlowList?formatTable(cashFlowList):{}
     const cashFlowStatementSymbol = cashFlowObj.symbol && cashFlowObj.symbol[0]
+    const tableHasData = Boolean (cashFlowStatementSymbol)
 
     // reduce result of number by 1000.
     const reducedNumber  = (value) => {
@@ -37,7 +38,7 @@ function CashFlowStatementDisplay({cashFlowList}) {
         return 0
     }
 
-    const formatedDate = (value) => {
+    const formattedDate = (value) => {
         return moment(value,'YYYY-MM-DD').format('MMM YYYY')
         
     }
@@ -49,7 +50,7 @@ function CashFlowStatementDisplay({cashFlowList}) {
                     <tr>
                     <th>Cash Flow from Operating Activities {cashFlowStatementSymbol} <small>(ALL IN THOUSANDS)</small></th>
                     {cashFlowObj.date?.map((value, index) => (
-                    <th key={index}>{formatedDate(value)}</th>
+                    <th key={index}>{formattedDate(value)}</th>
                     ))}
                     </tr>
                 </thead>
@@ -80,11 +81,16 @@ function CashFlowStatementDisplay({cashFlowList}) {
                     </tr>
                     <tr>
                         <td className="font-weight-bold">Changes in Operating Assets and Liabilities</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        {tableHasData &&
+                                <React.Fragment>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </React.Fragment>
+                                }
+                       
                     </tr>
                     <tr>
                         <td> - Inventory</td>
@@ -136,7 +142,7 @@ function CashFlowStatementDisplay({cashFlowList}) {
                     <tr>
                     <th>Investing Activities for {cashFlowStatementSymbol} <small>(ALL IN THOUSANDS)</small></th>
                     {cashFlowObj.date?.map((value, index) => (
-                    <th key={index}>{formatedDate(value)}</th>
+                    <th key={index}>{formattedDate(value)}</th>
                     ))}
                     </tr>
                 </thead>
@@ -185,7 +191,7 @@ function CashFlowStatementDisplay({cashFlowList}) {
                     <tr>
                     <th> - Financing Activities for {cashFlowStatementSymbol} <small>(ALL IN THOUSANDS)</small></th>
                     {cashFlowObj.date?.map((value, index) => (
-                    <th key={index}>{formatedDate(value)}</th>
+                    <th key={index}>{formattedDate(value)}</th>
                     ))}
                     </tr>
                 </thead>

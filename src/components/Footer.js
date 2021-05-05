@@ -31,7 +31,7 @@ function Footer() {
                     </div>
                     <div className="col-sm">
                         <h3 className="footer-p">Contact</h3>
-                        <p class="ml-3 nav-text">
+                        <p className="ml-3 nav-text">
                             11348 37th Ave Sw
                      <br />
                     Seattle, WA 98125

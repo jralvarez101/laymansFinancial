@@ -1,7 +1,13 @@
-import React, { useState} from 'react'
+import React, { useState, useEffect} from 'react'
 import ResultsTabs from '../components/ResultsTabs';
 import Footer from '../components/Footer';
-import {Container} from 'react-bootstrap';
+import {Container,  Button} from 'react-bootstrap';
+
+
+import {
+    useParams,
+    Link
+  } from "react-router-dom";
 
 
 
@@ -24,6 +30,23 @@ function Results() {
     const [cashFlowList, setCashFlowList] = useState([])
     const [searchInput, setSearchInput] = useState('')
 
+    const {tickerID} = useParams()
+    const uppercaseTickerID = tickerID?.toUpperCase()??''
+
+    const getData = ()=> {
+        getBalanceSheet();
+        getIncomeStatement(); 
+        getCashFlowStatement();
+    }
+
+    useEffect(()=>{
+        if(tickerID)getData()
+    },[tickerID])
+
+    console.log('tickerID: ',tickerID)
+
+
+
     const handleOnChange = (event)=> {
         const inputValue = event.target.value.toUpperCase()??''
 
@@ -32,10 +55,9 @@ function Results() {
 //Income Statement
 
 
-    const getIncomeStatement = async (event) => {
-        event.preventDefault()
+    const getIncomeStatement = async () => {
 
-        const getIncomeStatementURL = `${API_URL}${API_VERSION}${INCOME_STATEMENT_URL}${searchInput}?limit=${GET_LIMIT}&apikey=${API_KEY}`
+        const getIncomeStatementURL = `${API_URL}${API_VERSION}${INCOME_STATEMENT_URL}${uppercaseTickerID}?limit=${GET_LIMIT}&apikey=${API_KEY}`
         try{
 
             const response = await fetch(getIncomeStatementURL)
@@ -53,10 +75,9 @@ function Results() {
 
 //Balance Sheet
 
-const getBalanceSheet = async (event) => {
-    event.preventDefault()
+const getBalanceSheet = async () => {
 
-    const getBalanceSheetURL = `${API_URL}${API_VERSION}${BALANCE_SHEET_STATEMENT_URL}${searchInput}?limit=${GET_LIMIT}&apikey=${API_KEY}`
+    const getBalanceSheetURL = `${API_URL}${API_VERSION}${BALANCE_SHEET_STATEMENT_URL}${uppercaseTickerID}?limit=${GET_LIMIT}&apikey=${API_KEY}`
     try {
         const response = await fetch(getBalanceSheetURL)
 
@@ -72,10 +93,9 @@ console.log('data List Balance Sheet:', balanceList)
 
 //Cash Flow Statement
 
-const getCashFlowStatement = async (event) => {
-    event.preventDefault()
+const getCashFlowStatement = async () => {
 
-    const getCashFlowURL = `${API_URL}${API_VERSION}${CASH_FLOW_URL}${searchInput}?limit=${GET_LIMIT}&apikey=${API_KEY}`
+    const getCashFlowURL = `${API_URL}${API_VERSION}${CASH_FLOW_URL}${uppercaseTickerID}?limit=${GET_LIMIT}&apikey=${API_KEY}`
     try {
         const response = await fetch(getCashFlowURL)
 
@@ -87,21 +107,22 @@ const getCashFlowStatement = async (event) => {
         console.log('error', error)
     }
 }
+
+// navigateToTickerDetail = 
 console.log('data List CashFlow:', cashFlowList)
 
-    const getData = (e)=> {
-        getBalanceSheet(e);
-        getIncomeStatement(e); 
-        getCashFlowStatement(e);
-    }
+
 
     return (
         <div className='results-container'>
             <Container  className='results-container' >
                 <h1 >Financial Results</h1>
-                <h2>Show Financial Statements for: {searchInput ?? 'no dataList'}</h2>
+                <h2>Show Financial Statements for: {uppercaseTickerID||searchInput}</h2>
                 <input className ="mb-5" value={searchInput||''} onChange={handleOnChange}/>
-                <button className='results-btn' variant="outline-primary" onClick={getData}>Search</button>
+                <Link to={`/results/${searchInput}`}>
+                                <Button className='search-btn' variant="outline-primary">Search</Button>
+                        </Link>
+                {/* <button className='results-btn' variant="outline-primary" onClick={getData}>Search</button> */}
             </Container>
             <ResultsTabs incomeList={incomeList} balanceList={balanceList} cashFlowList={cashFlowList}/>
            

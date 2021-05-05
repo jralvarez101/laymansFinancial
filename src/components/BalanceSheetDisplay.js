@@ -32,6 +32,7 @@ const formatTable =(response=[])=>{
 function BalanceSheetDisplay({balanceList}) {
     const balanceSheetObj = balanceList?formatTable(balanceList):{}
     const balanceSheetSymbol = balanceSheetObj.symbol && balanceSheetObj.symbol[0]
+    const tableHasData = Boolean (balanceSheetSymbol)
 
     const [isOpenCurrentAsset, setIsOpenCurrentAsset] = useState(false);
     const [isOpenNonCurrentAsset, setIsOpenNonCurrentAsset] = useState(false);
@@ -76,11 +77,15 @@ function BalanceSheetDisplay({balanceList}) {
                             {/* first level title*/}
                             <tr>
                                 <td className="font-weight-bold">ASSETS</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                {tableHasData &&
+                                <React.Fragment>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </React.Fragment>
+                                }
                             </tr>
                             <tr>
                                 {/* first level */}
@@ -181,11 +186,15 @@ function BalanceSheetDisplay({balanceList}) {
                             {/* first level title*/}
                             <tr>
                                 <td className="font-weight-bold">LIABILITIES AND STOCKHOLDER'S EQUITY</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                {tableHasData &&
+                                <React.Fragment>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </React.Fragment>
+                                }
                                 
                             </tr>
                             {/* first level */}
