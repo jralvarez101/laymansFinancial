@@ -2,9 +2,6 @@ import React , {useState} from 'react';
 import {Table} from 'react-bootstrap';
 import { BsFillCaretRightFill } from "react-icons/bs";
 import moment from 'moment';
-moment().format();
-
-
 
 const formatTable =(response=[])=>{
     if(response.length<1)return {}

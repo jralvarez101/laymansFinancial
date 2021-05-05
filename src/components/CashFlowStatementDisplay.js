@@ -1,7 +1,6 @@
 import React from 'react'
 import {Table} from 'react-bootstrap';
 import moment from 'moment';
-moment().format();
 
 const formatTable =(response=[])=>{
     if(response.length<1)return {}

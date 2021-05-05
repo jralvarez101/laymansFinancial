@@ -1,7 +1,6 @@
 import React from 'react';
 import {Table} from 'react-bootstrap';
 import moment from 'moment';
-moment().format();
 
 const formatTable =(response=[])=>{
     if(response.length<1)return {}
@@ -41,10 +40,8 @@ function IncomeStatementDisplay({incomeList}) {
 
         return 0
     }
-    const formatedDate = (value) => {
-        return moment(value,'YYYY-MM-DD').format('MMM YYYY')
-        
-    }
+    const formattedDate = (value) => moment(value,'YYYY-MM-DD').format('MMM YYYY')
+   
 
     return (
         <div>
@@ -53,7 +50,7 @@ function IncomeStatementDisplay({incomeList}) {
                     <tr>
                     <th>Income Statement for {incomeStatementSymbol}<small>(ALL IN THOUSANDS)</small></th>
                     {incomeObj.date?.map((value, index) => (
-                    <th key={index}>{formatedDate(value)}</th>
+                    <th key={index}>{formattedDate(value)}</th>
                     ))}
                     </tr>
                 </thead>
