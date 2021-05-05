@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import ResultsTabs from '../components/ResultsTabs';
 import Footer from '../components/Footer';
 import {Container,  Button} from 'react-bootstrap';
