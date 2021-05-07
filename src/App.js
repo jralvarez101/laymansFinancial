@@ -20,7 +20,8 @@ function App() {
             <Route path='/' exact component={HomePage}/>
             <Route path='/about' component={About}/>
             <Route path='/contact' component={Contact}/>
-            <Route path='/results' component={Results}/>
+            <Route exact path='/results' component={Results}/>
+            <Route exact path='/results/:tickerID' component={Results}/>
           </Switch>
       </div>
     </Router>

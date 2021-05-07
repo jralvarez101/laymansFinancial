@@ -1,5 +1,6 @@
 import React from 'react'
-import {Table, Container} from 'react-bootstrap';
+import {Table} from 'react-bootstrap';
+import moment from 'moment';
 
 const formatTable =(response=[])=>{
     if(response.length<1)return {}
@@ -24,14 +25,31 @@ const formatTable =(response=[])=>{
 function CashFlowStatementDisplay({cashFlowList}) {
     const cashFlowObj = cashFlowList?formatTable(cashFlowList):{}
     const cashFlowStatementSymbol = cashFlowObj.symbol && cashFlowObj.symbol[0]
+    const tableHasData = Boolean (cashFlowStatementSymbol)
+
+    // reduce result of number by 1000.
+    const reducedNumber  = (value) => {
+        if(value && value !== 0 && typeof value === 'number'){
+
+            return value/1000;
+        }
+
+        return 0
+    }
+
+    const formattedDate = (value) => {
+        return moment(value,'YYYY-MM-DD').format('MMM YYYY')
+        
+    }
+
     return (
-        <Container>
-            <Table responsive bordered striped>
+        <div>
+            <Table responsive bordered striped className='table-text'>
                 <thead>
                     <tr>
-                    <th>Cash Flow from Operating Activities {cashFlowStatementSymbol}</th>
+                    <th>Cash Flow from Operating Activities {cashFlowStatementSymbol} <small>(ALL IN THOUSANDS)</small></th>
                     {cashFlowObj.date?.map((value, index) => (
-                    <th key={index}>{value}</th>
+                    <th key={index}>{formattedDate(value)}</th>
                     ))}
                     </tr>
                 </thead>
@@ -39,198 +57,207 @@ function CashFlowStatementDisplay({cashFlowList}) {
                     <tr>
                     <td className="font-weight-bold">Net Income</td>
                         {cashFlowObj.netIncome?.map((value, index) => (
-                    <td className="font-weight-bold" key={index}>{value}</td>
+                    <td className="font-weight-bold" key={index}>{reducedNumber(value)}</td>
                     ))}
                     </tr>
                     <tr>
-                        <td >Depreciation and Amortization</td>
+                        <td > - Depreciation and Amortization</td>
                         {cashFlowObj.depreciationAndAmortization?.map((value, index) => (
-                    <td key={index}>{value}</td>
+                    <td key={index}>{reducedNumber(value)}</td>
                     ))}
                     </tr>
                     <tr>
-                        <td>Stock Based Compensation</td>
+                        <td> - Stock Based Compensation</td>
                         {cashFlowObj.stockBasedCompensation?.map((value, index) => (
-                    <td key={index}>{value}</td>
+                    <td key={index}>{reducedNumber(value)}</td>
                     ))}
                     </tr>
                     <tr>
-                        <td>Deferred Income Tax</td>
+                        <td> - Deferred Income Tax</td>
                         {cashFlowObj.deferredIncomeTax?.map((value, index) => (
-                    <td key={index}>{value}</td>
+                    <td key={index}>{reducedNumber(value)}</td>
                     ))}
                     </tr>
                     <tr>
                         <td className="font-weight-bold">Changes in Operating Assets and Liabilities</td>
-                        <td></td>
+                        {tableHasData &&
+                                <React.Fragment>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </React.Fragment>
+                                }
+                       
                     </tr>
                     <tr>
-                        <td>Inventory</td>
+                        <td> - Inventory</td>
                         {cashFlowObj.inventory?.map((value, index) => (
-                    <td key={index}>{value}</td>
+                    <td key={index}>{reducedNumber(value)}</td>
                     ))}
                     </tr>
                     <tr>
-                        <td>Accounts Receivables</td>
+                        <td> - Accounts Receivables</td>
                         {cashFlowObj.accountsReceivables?.map((value, index) => (
-                    <td key={index}>{value}</td>
+                    <td key={index}>{reducedNumber(value)}</td>
                     ))}
                     </tr>
                     <tr>
-                        <td>Accounts Payables</td>
+                        <td> - Accounts Payables</td>
                         {cashFlowObj.accountsPayables?.map((value, index) => (
-                    <td key={index}>{value}</td>
+                    <td key={index}>{reducedNumber(value)}</td>
                     ))}
                     </tr>
                     <tr>
-                        <td >Change in Working Capital</td>
+                        <td > - Change in Working Capital</td>
                         {cashFlowObj.changeInWorkingCapital?.map((value, index) => (
-                    <td  key={index}>{value}</td>
+                    <td  key={index}>{reducedNumber(value)}</td>
                     ))}
                     </tr>
                     <tr>
-                        <td>Other Working Capital</td>
+                        <td> - Other Working Capital</td>
                         {cashFlowObj.otherWorkingCapital?.map((value, index) => (
-                    <td key={index}>{value}</td>
+                    <td key={index}>{reducedNumber(value)}</td>
                     ))}
                     </tr>
                     <tr>
-                        <td >Other Non-Cash Items</td>
+                        <td > - Other Non-Cash Items</td>
                         {cashFlowObj.otherNonCashItems?.map((value, index) => (
-                    <td key={index}>{value}</td>
+                    <td key={index}>{reducedNumber(value)}</td>
                     ))}
                     </tr>
                     <tr>
                         <td className="font-weight-bold">Net Cash Provided By Operating Activities</td>
                         {cashFlowObj.netCashProvidedByOperatingActivities?.map((value, index) => (
-                    <td className="font-weight-bold" key={index}>{value}</td>
+                    <td className="font-weight-bold" key={index}>{reducedNumber(value)}</td>
                     ))}
                     </tr>
                 </tbody>
             </Table>
 
-            <Table responsive bordered striped>
+            <Table responsive bordered striped className='table-text'>
                 <thead>
                     <tr>
-                    <th>Investing Activities for {cashFlowStatementSymbol}</th>
+                    <th>Investing Activities for {cashFlowStatementSymbol} <small>(ALL IN THOUSANDS)</small></th>
                     {cashFlowObj.date?.map((value, index) => (
-                    <th key={index}>{value}</th>
+                    <th key={index}>{formattedDate(value)}</th>
                     ))}
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                    <td >Investment in Property Plant and Equipment</td>
+                    <td > - Investment in Property Plant and Equipment</td>
                         {cashFlowObj.investmentsInPropertyPlantAndEquipment?.map((value, index) => (
-                    <td key={index}>{value}</td>
+                    <td key={index}>{reducedNumber(value)}</td>
                     ))}
                     </tr>
                     <tr>
-                        <td >Acquisitions Net</td>
+                        <td > - Acquisitions Net</td>
                         {cashFlowObj.acquisitionsNet?.map((value, index) => (
-                    <td key={index}>{value}</td>
+                    <td key={index}>{reducedNumber(value)}</td>
                     ))}
                     </tr>
                     <tr>
-                        <td>Purchase of Investments</td>
+                        <td> - Purchase of Investments</td>
                         {cashFlowObj.purchasesOfInvestments?.map((value, index) => (
-                    <td key={index}>{value}</td>
+                    <td key={index}>{reducedNumber(value)}</td>
                     ))}
                     </tr>
                     <tr>
-                        <td>Sales and Maturities of marketable Securities</td>
+                        <td> - Sales and Maturities of marketable Securities</td>
                         {cashFlowObj.salesMaturitiesOfInvestments?.map((value, index) => (
-                    <td key={index}>{value}</td>
+                    <td key={index}>{reducedNumber(value)}</td>
                     ))}
                     </tr>
                     <tr>
-                        <td>Other Investing Activities</td>
+                        <td> - Other Investing Activities</td>
                         {cashFlowObj.otherInvestingActivites?.map((value, index) => (
-                    <td key={index}>{value}</td>
+                    <td key={index}>{reducedNumber(value)}</td>
                     ))}
                     </tr>
                     <tr>
                         <td className="font-weight-bold">Net Cash Used for Investing Activities</td>
                         {cashFlowObj.netCashUsedForInvestingActivites?.map((value, index) => (
-                    <td  className="font-weight-bold" key={index}>{value}</td>
+                    <td  className="font-weight-bold" key={index}>{reducedNumber(value)}</td>
                     ))}
                     </tr>   
                 </tbody>
             </Table>
 
-            <Table responsive bordered striped>
+            <Table responsive bordered striped className='table-text'>
                 <thead>
                     <tr>
-                    <th>Financing Activities for {cashFlowStatementSymbol}</th>
+                    <th> - Financing Activities for {cashFlowStatementSymbol} <small>(ALL IN THOUSANDS)</small></th>
                     {cashFlowObj.date?.map((value, index) => (
-                    <th key={index}>{value}</th>
+                    <th key={index}>{formattedDate(value)}</th>
                     ))}
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                    <td >Debt Repayment</td>
+                    <td > - Debt Repayment</td>
                         {cashFlowObj.debtRepayment?.map((value, index) => (
-                    <td key={index}>{value}</td>
+                    <td key={index}>{reducedNumber(value)}</td>
                     ))}
                     </tr>
                     <tr>
-                        <td >Common Stock Issued</td>
+                        <td > - Common Stock Issued</td>
                         {cashFlowObj.commonStockIssued?.map((value, index) => (
-                    <td key={index}>{value}</td>
+                    <td key={index}>{reducedNumber(value)}</td>
                     ))}
                     </tr>
                     <tr>
-                        <td>Common Stock Purchased</td>
+                        <td> - Common Stock Purchased</td>
                         {cashFlowObj.commonStockRepurchased?.map((value, index) => (
-                    <td key={index}>{value}</td>
+                    <td key={index}>{reducedNumber(value)}</td>
                     ))}
                     </tr>
                     <tr>
-                        <td>Dividends Paid</td>
+                        <td> - Dividends Paid</td>
                         {cashFlowObj.dividendsPaid?.map((value, index) => (
-                    <td key={index}>{value}</td>
+                    <td key={index}>{reducedNumber(value)}</td>
                     ))}
                     </tr>
                     <tr>
-                        <td>Other Financing Activities</td>
+                        <td> - Other Financing Activities</td>
                         {cashFlowObj.otherFinancingActivites?.map((value, index) => (
-                    <td key={index}>{value}</td>
+                    <td key={index}>{reducedNumber(value)}</td>
                     ))}
                     </tr>
                     <tr>
                         <td className="font-weight-bold">Net Cash Provided by Financing Activities</td>
                         {cashFlowObj.netCashUsedProvidedByFinancingActivities?.map((value, index) => (
-                    <td  className="font-weight-bold" key={index}>{value}</td>
+                    <td  className="font-weight-bold" key={index}>{reducedNumber(value)}</td>
                     ))}
                     </tr>   
                 </tbody>
             </Table>
 
-            <Table responsive bordered striped>
+            <Table responsive bordered striped className='table-text'>
                 <tbody>
                     <tr>
                     <td >Foreign Currency on Cash and Cash Equivalents</td>
                         {cashFlowObj.effectOfForexChangesOnCash?.map((value, index) => (
-                    <td key={index}>{value}</td>
+                    <td key={index}>{reducedNumber(value)}</td>
                     ))}
                     </tr>
                     <tr>
                         <td >Net Change in Cash</td>
                         {cashFlowObj.netChangeInCash?.map((value, index) => (
-                    <td key={index}>{value}</td>
+                    <td key={index}>{reducedNumber(value)}</td>
                     ))}
                     </tr>
                     <tr>
                         <td className="font-weight-bold">CASH AND CASH EQUIVALENTS, END OF PERIOD</td>
                         {cashFlowObj.cashAtEndOfPeriod?.map((value, index) => (
-                    <td  className="font-weight-bold" key={index}>{value}</td>
+                    <td  className="font-weight-bold" key={index}>{reducedNumber(value)}</td>
                     ))}
                     </tr>   
                 </tbody>
             </Table>
-        </Container>
-        
+       
+         </div>
     )
 }
 

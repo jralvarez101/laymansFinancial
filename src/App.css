@@ -292,8 +292,33 @@ a:hover{
   font-size: 15px;
 }  
 
-.table-data-style{
-  padding-left: 10px;
+.iconOpen {
+  transform: rotate(90deg);
+}
+
+.animateTransition{
+  transition: all 300ms;
+}
+
+/* Results Section */
+.results-container{
+  background-color: #ecf4f3;
+  padding-top: 30px;
+ 
+}
+
+.results-btn{
+  color: #006a71 ;
+  border:2px solid #006a71 ;
+}
+
+/* Results tabs section */
+.table-text {
+  color:#006a71 ;
+}
+
+.table-container{
+  padding-bottom:50px;
 }
 
 
