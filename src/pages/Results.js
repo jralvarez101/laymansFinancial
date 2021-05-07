@@ -1,13 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import ResultsTabs from '../components/ResultsTabs';
 import Footer from '../components/Footer';
 import {Container,  Button} from 'react-bootstrap';
-
-
-import {
-    useParams,
-    Link
-  } from "react-router-dom";
+import { useParams, Link} from "react-router-dom";
 
 
 
@@ -33,15 +28,82 @@ function Results() {
     const {tickerID} = useParams()
     const uppercaseTickerID = tickerID?.toUpperCase()??''
 
-    const getData = ()=> {
+   
+    // getIncomeStatement wrapped in useCallback
+    const getIncomeStatement = useCallback( async () => {
+
+        const getIncomeStatementURL = `${API_URL}${API_VERSION}${INCOME_STATEMENT_URL}${uppercaseTickerID}?limit=${GET_LIMIT}&apikey=${API_KEY}`
+        try{
+
+            const response = await fetch(getIncomeStatementURL)
+            
+            const responseDataList = await response.json()
+
+            setIncomeList(responseDataList)
+
+        } catch(error){
+            console.log(error)
+        }
+        
+    },[uppercaseTickerID])
+    console.log('data list IncomeStatement: ', incomeList)
+
+    // getBalanceSheet wrapped in useCallback
+    const getBalanceSheet = useCallback(async () => {
+
+        const getBalanceSheetURL = `${API_URL}${API_VERSION}${BALANCE_SHEET_STATEMENT_URL}${uppercaseTickerID}?limit=${GET_LIMIT}&apikey=${API_KEY}`
+        try {
+            const response = await fetch(getBalanceSheetURL)
+    
+            const responseDataList = await response.json()
+    
+            setBalanceList(responseDataList)
+        }
+        catch(error){
+            console.log('error', error)
+        }
+    },[uppercaseTickerID]);
+    console.log('data List Balance Sheet:', balanceList)
+
+    // getCashFlowStatement wrapped in useCallback
+    const getCashFlowStatement = useCallback(async () => {
+
+        const getCashFlowURL = `${API_URL}${API_VERSION}${CASH_FLOW_URL}${uppercaseTickerID}?limit=${GET_LIMIT}&apikey=${API_KEY}`
+        try {
+            const response = await fetch(getCashFlowURL)
+    
+            const responseDataList = await response.json()
+    
+            setCashFlowList(responseDataList)
+        }
+        catch(error){
+            console.log('error', error)
+        }
+    },[uppercaseTickerID]);
+    console.log('data List CashFlow:', cashFlowList)
+
+
+    
+
+    // const getData = ()=> {
+    //     getBalanceSheet();
+    //     getIncomeStatement(); 
+    //     getCashFlowStatement();
+    // }
+
+    const getData = useCallback(() => {
         getBalanceSheet();
         getIncomeStatement(); 
         getCashFlowStatement();
+      }, [getBalanceSheet,getIncomeStatement,getCashFlowStatement]);
+    
+    useEffect(
+        ()=>{
+        if(tickerID)getData();
     }
+    ,[getData, tickerID]);
 
-    useEffect(()=>{
-        if(tickerID)getData()
-    },[tickerID])
+    
 
     console.log('tickerID: ',tickerID)
 
@@ -55,61 +117,61 @@ function Results() {
 //Income Statement
 
 
-    const getIncomeStatement = async () => {
+    // const getIncomeStatement = async () => {
 
-        const getIncomeStatementURL = `${API_URL}${API_VERSION}${INCOME_STATEMENT_URL}${uppercaseTickerID}?limit=${GET_LIMIT}&apikey=${API_KEY}`
-        try{
+    //     const getIncomeStatementURL = `${API_URL}${API_VERSION}${INCOME_STATEMENT_URL}${uppercaseTickerID}?limit=${GET_LIMIT}&apikey=${API_KEY}`
+    //     try{
 
-            const response = await fetch(getIncomeStatementURL)
+    //         const response = await fetch(getIncomeStatementURL)
             
-            const responseDataList = await response.json()
+    //         const responseDataList = await response.json()
 
-            setIncomeList(responseDataList)
+    //         setIncomeList(responseDataList)
 
-        }catch(error){
-            console.log('error: ', error)
-        }
+    //     }catch(error){
+    //         console.log('error: ', error)
+    //     }
         
-         }
-         console.log('data list IncomeStatement: ', incomeList)
+    //      }
+    //      console.log('data list IncomeStatement: ', incomeList)
 
 //Balance Sheet
 
-const getBalanceSheet = async () => {
+// const getBalanceSheet = async () => {
 
-    const getBalanceSheetURL = `${API_URL}${API_VERSION}${BALANCE_SHEET_STATEMENT_URL}${uppercaseTickerID}?limit=${GET_LIMIT}&apikey=${API_KEY}`
-    try {
-        const response = await fetch(getBalanceSheetURL)
+//     const getBalanceSheetURL = `${API_URL}${API_VERSION}${BALANCE_SHEET_STATEMENT_URL}${uppercaseTickerID}?limit=${GET_LIMIT}&apikey=${API_KEY}`
+//     try {
+//         const response = await fetch(getBalanceSheetURL)
 
-        const responseDataList = await response.json()
+//         const responseDataList = await response.json()
 
-        setBalanceList(responseDataList)
-    }
-    catch(error){
-        console.log('error', error)
-    }
-}
-console.log('data List Balance Sheet:', balanceList)
+//         setBalanceList(responseDataList)
+//     }
+//     catch(error){
+//         console.log('error', error)
+//     }
+// }
+// console.log('data List Balance Sheet:', balanceList)
 
 //Cash Flow Statement
 
-const getCashFlowStatement = async () => {
+// const getCashFlowStatement = async () => {
 
-    const getCashFlowURL = `${API_URL}${API_VERSION}${CASH_FLOW_URL}${uppercaseTickerID}?limit=${GET_LIMIT}&apikey=${API_KEY}`
-    try {
-        const response = await fetch(getCashFlowURL)
+//     const getCashFlowURL = `${API_URL}${API_VERSION}${CASH_FLOW_URL}${uppercaseTickerID}?limit=${GET_LIMIT}&apikey=${API_KEY}`
+//     try {
+//         const response = await fetch(getCashFlowURL)
 
-        const responseDataList = await response.json()
+//         const responseDataList = await response.json()
 
-        setCashFlowList(responseDataList)
-    }
-    catch(error){
-        console.log('error', error)
-    }
-}
+//         setCashFlowList(responseDataList)
+//     }
+//     catch(error){
+//         console.log('error', error)
+//     }
+// }
+// console.log('data List CashFlow:', cashFlowList)
 
-// navigateToTickerDetail = 
-console.log('data List CashFlow:', cashFlowList)
+
 
 
 
@@ -120,8 +182,8 @@ console.log('data List CashFlow:', cashFlowList)
                 <h2>Show Financial Statements for: {uppercaseTickerID||searchInput}</h2>
                 <input className ="mb-5" value={searchInput||''} onChange={handleOnChange}/>
                 <Link to={`/results/${searchInput}`}>
-                                <Button className='search-btn' variant="outline-primary">Search</Button>
-                        </Link>
+                    <Button className='results-btn' variant="outline-primary">Search</Button>
+                </Link>
                 {/* <button className='results-btn' variant="outline-primary" onClick={getData}>Search</button> */}
             </Container>
             <ResultsTabs incomeList={incomeList} balanceList={balanceList} cashFlowList={cashFlowList}/>
@@ -130,7 +192,7 @@ console.log('data List CashFlow:', cashFlowList)
 
         </div>
     )
-}
+    }
 
 export default Results
 

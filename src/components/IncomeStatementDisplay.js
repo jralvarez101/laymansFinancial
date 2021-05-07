@@ -28,7 +28,6 @@ const formatTable =(response=[])=>{
 function IncomeStatementDisplay({incomeList}) {
     const incomeObj = incomeList?formatTable(incomeList):{}
     const incomeStatementSymbol = incomeObj.symbol && incomeObj.symbol[0]
-    const tableHasData = Boolean(incomeStatementSymbol)
     
 
      // reduce result of number by 1000.
@@ -92,16 +91,7 @@ function IncomeStatementDisplay({incomeList}) {
                     ))}
                     </tr>
                     <tr>
-                        <td className="font-weight-bold">OTHER EXPENSES</td>
-                        {tableHasData &&
-                        <React.Fragment>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </React.Fragment>
-                        }
+                        <td colSpan={6} className="font-weight-bold">OTHER EXPENSES</td>
                     </tr>
                     <tr>
                         <td> - Cost and Expenses</td>
