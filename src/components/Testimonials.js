@@ -5,7 +5,7 @@ import { Carousel, } from 'react-bootstrap';
 function Testimonials() {
     const [index, setIndex] = useState(0);
 
-    const handleSelect = (selectedIndex, e) => {
+    const handleSelect = (selectedIndex) => {
         setIndex(selectedIndex);
     };
 
@@ -29,11 +29,11 @@ function Testimonials() {
 
     return (
         <div className="container-fluid text-center carousel-div">
-            <p class="testimonials-heading font-weight-bold">WHAT OUR CUSTOMERS HAVE TO SAY</p>
+            <p className="testimonials-heading font-weight-bold">WHAT OUR CUSTOMERS HAVE TO SAY</p>
             <div className="carousel-container">
             <Carousel activeIndex={index} onSelect={handleSelect}>
-                {testimonials.map(({ content, name, profile }) => (
-                    <Carousel.Item>
+                {testimonials.map(({ content, name, profile },index) => (
+                    <Carousel.Item key={index}>
                         <h3>{content}</h3>
                         <img className="testimonial-image" src={profile} alt="testimonial 1" />
                         <em>{name} </em>
